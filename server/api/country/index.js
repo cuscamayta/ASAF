@@ -5,11 +5,11 @@ var controller = require('./country.controller');
 
 var router = express.Router();
 
-router.get('/country', controller.index);
-router.get('/country/:id', controller.show);
-router.post('/country', controller.create);
-router.put('/country/:id', controller.update);
-router.patch('/country/:id', controller.update);
-router.delete('/country/:id', controller.destroy);
+router.get('/', controller.index);
+router.get('/:id', controller.show);
+router.post('/', controller.create);
+router.put('/:id', controller.update);
+router.patch('/:id', controller.update);
+router.delete('/:id', controller.destroy);
 
 module.exports = router;
