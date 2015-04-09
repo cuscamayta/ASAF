@@ -14,6 +14,9 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
   console.log('Connected to Database');
 });*/
 
+global.rootRequire = function(name) {
+    return require(__dirname + '/' + name);
+}
 
 // Populate DB with sample data
 //if(config.seedDB) { require('./config/seed'); }

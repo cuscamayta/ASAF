@@ -6,7 +6,7 @@ var Country = require('./country.model');
 // Get list of things
 exports.index = function (req, res) {
     Country.find(function (err, products) {
-        if (err) {
+          if (err) {
             return handleError(res, err);
         }
         return res.json(200, products);
