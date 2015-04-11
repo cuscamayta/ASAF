@@ -122,30 +122,3 @@
         bottom: 0;
     }
 </style>
-
-
-<script>
-    $(document).ready(function () {
-
-        function save() {
-            var prd = {
-                name: 'prd001',
-                description: 'description test',
-                quantity: 5
-            };
-
-            $.ajax({
-                url: '/product',
-                type: 'POST',
-                dataType: 'json',
-                data: prd,
-                success: function (response) {
-                    console.log('response');
-                    console.log(response);
-                }
-
-            });
-        }
-
-    });
-</script>
