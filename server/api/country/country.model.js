@@ -26,4 +26,4 @@ var productSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('Country', CountrySchema);
+module.exports = mongoose.model('Country', productSchema);

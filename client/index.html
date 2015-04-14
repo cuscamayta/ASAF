@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/public/bootmetro/dist/assets/css/bootmetro-ui-light.css">
 </head>
 
-<body>
+<body ng-app="asafApp">
     <div class="row-fluid">
         <div class="navbar" style="margin-bottom:1px;">
             <div class="navbar-inner">
@@ -89,6 +89,10 @@
             </div>
         </div>
         <div class="span9" style='margin-left:0px;'>
+            <div ng-view>
+                <!--            all the content here-->
+            </div>
+            <!--
             <div style='width:100%;height:100%;padding-top:5px;'>
                 <div class="hero-unit">
                     <h1>Hello, world!</h1>
@@ -97,6 +101,7 @@
                     </p>
                 </div>
             </div>
+-->
         </div>
     </div>
     <div class="row-fluid">
@@ -105,9 +110,25 @@
 </body>
 
 </html>
+
+<!--UI libs-->
 <script src="/public/bootmetro/dist/assets/js/jquery-1.10.0.js"></script>
 <script src="/public/bootmetro/dist/assets/js/bootstrap.js"></script>
 <script src="/public/bootmetro/dist/assets/js/bootmetro.js"></script>
+
+
+<script src="client/public/vendor/angular/angular.js"></script>
+<script src="client/public/vendor/jquery/jquery.js"></script>
+
+
+
+<!-- App libs -->
+<script src="client/app/app.js"></script>
+<script src="client/app/controllers/home/homeController.js"></script>
+<script src="client/app/services/home/homeService.js"></script>
+<script src="client/app/controllers/product/productController.js"></script>
+<script src="client/app/services/product/productService.js"></script>
+
 <style type="text/css">
     /* Styles go here */
 

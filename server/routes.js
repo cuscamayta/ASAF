@@ -12,9 +12,9 @@ module.exports = function (app) {
 
 
     //    console.log( __dirname + '/'+'api/common/common.route');
-    app.use('/api/product', require('./api/product'));
-	app.use('/api/product', require('./api/country'));
-//    app.use('/api/country', require(__dirname + '/' + 'api/common/common.route')(modules.country));
+    //  app.use('/api/product', require('./api/product'));
+    //	app.use('/api/product', require('./api/country'));
+    //    app.use('/api/country', require(__dirname + '/' + 'api/common/common.route')(modules.country));
     app.use('/api/users', require('./api/user'));
 
     app.use('/auth', require('./auth'));
