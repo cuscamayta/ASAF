@@ -43,7 +43,8 @@ app.controller('ProductController', function ($scope, productService) {
 	$scope.showModalConfirmation = function (e, product) {
 		e.preventDefault();
 		$scope.product = product;
-		$('#modal-confirmation').modal();
+		$scope.modalConfirmationId = 'product';
+		$('#modal-confirmation-product').modal();
 	}
 
 	$scope.deleteProduct = function () {

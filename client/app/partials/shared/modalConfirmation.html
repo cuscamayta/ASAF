@@ -1,0 +1,15 @@
+<div id="{{modalId}}" class="modal hide fade modal-confirmation" data-backdrop="static">
+    <div class="modal-header">
+        <h5>{{header}}</h5>
+    </div>
+    <div class="modal-body modal-body-warning-orange">
+        <span class="modal-icon"><i class="{{modalIcon}}"></i></span>
+        <span class="modal-icon-text" style="padding-right: 40px!important; margin-top: 5px!important; font-weight: bold">
+            <span>{{content}}</span>
+        </span>
+    </div>
+    <div class="modal-footer">
+        <a href="#" ng-show="buttonAccept" class="btn btn-primary" id="btn-confirm" data-dismiss="modal" data-i18n="_ACCEPTBUTTONLABEL" ng-click="onConfirmAction()"></a>
+        <a href="#" ng-show="buttonCancel" class="btn" data-dismiss="modal" data-i18n="_CANCELLABEL" ng-click="onCancelAction()"></a>
+    </div>
+</div>
