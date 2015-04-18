@@ -1,20 +1,33 @@
-var app = angular.module('asafApp', []);
+var app = angular.module('customersApp', []);
 
 app.config(function ($routeProvider) {
-    $routeProvider
-        .when('/products', {
-            controller: 'ProductController',
-            templateUrl: '/app/partials/inventory/product.html'
-        })
-        .when('/product/:productId', {
-            controller: 'ProductController',
-            templateUrl: '/app/partials/inventory/product.html'
-        })
-        .when('/prductType', {
-            controller: 'ProductTypeController',
-            templateUrl: '/app/partials/inventory/productType.html'
-        })
-        .otherwise({
-            redirectTo: '/Home'
-        });
+	$routeProvider
+		.when('/producto', {
+			controller: 'ProductController',
+			templateUrl: '/app/partials/inventory/product.html'
+		})
+		.when('/producto/:id', {
+			controller: 'CustomerOrdersController',
+			templateUrl: '/app/partials/inventory/product.html'
+		})
+		.when('/tipoProducto', {
+			controller: 'TypeProductController',
+			templateUrl: '/app/partials/inventory/typeProduct.html'
+		})
+		.when('/', {
+			controller: 'HomeController',
+			templateUrl: '/app/partials/home/home.html'
+		})
+		.when('/inicio', {
+			controller: 'HomeController',
+			templateUrl: '/app/partials/home/home.html'
+		})
+		.when('/usuario', {
+			controller: 'UserController',
+			templateUrl: '/app/partials/security/user.html'
+		})
+
+	.otherwise({
+		redirectTo: '/inicio'
+	});
 });

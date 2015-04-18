@@ -1,29 +1,21 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+	Schema = mongoose.Schema;
 
 
-
-var price = new Schema({
-    product: productSchema,
-    dateProductPrice: Date,
-    price: Number
+var countrySchema = new Schema({
+	Name: String,
+	Description: String
 });
 
-var productType = {
-    name: String,
-    description: String
-};
+//var price = new Schema({
+//    product: productSchema,
+//    dateProductPrice: Date,
+//    price: Number
+//});
+//
 
 
-var productSchema = new Schema({
-    productId : Objectid,
-    name: String,
-    description: String,
-    Code: string,
-    productType: productType
-})
 
-
-module.exports = mongoose.model('Country', productSchema);
+module.exports = mongoose.model('Country', countrySchema);

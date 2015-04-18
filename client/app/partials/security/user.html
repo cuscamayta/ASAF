@@ -1,0 +1,106 @@
+<div class="container view">
+    <div class="row">
+        <h2 id="tables-condensed">Lista de Usuarios<a href="#tables-condensed"></a></h2>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary pull-right" data-ng-click='showModalAddUser($event)'>Nuevo Usuario</button>
+        <br>
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>Cargo</th>
+                        <th>Contrasenia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat='user in users'>
+                        <td>{{$index + 1}}</td>
+                        <td>{{user.Name}}</td>
+                        <td>{{user.LastName}}</td>
+                        <td>{{user.EnterDate}}</td>
+                        <td>{{user.Role}}</td>
+                        <td>
+                            <a href="#" class="options-grid" data-ng-click='showModalEditProduct($event,user);'>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="#" class="options-grid" data-ng-click='deleteProduct($event,user);'>
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            <a href="#" class="options-grid" data-ng-click='viewProduct($event,user);'>
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{user.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="user-name">Nombre</label>
+                        <input type="text" class="form-control" data-ng-model='user.Name' id="user-name" placeholder="Nombre Usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descripcion</label>
+                        <input type="text" class="form-control" data-ng-model='user.Description' id="description" placeholder="Descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="type-user">Tipo Producto</label>
+                        <input type="text" class="form-control" data-ng-model='user.TypeProduct' id="type-product" placeholder="Tipo Producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Codigo</label>
+                        <input type="text" class="form-control" data-ng-model='user.Code' id="code" placeholder="Codigo">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-ng-click='addProduct();'>Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--modal confirmation-->
+<div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Confirmacion</h4>
+            </div>
+            <div class="modal-body">
+                <span>Estas seguro de Eliminar: <strong> {{user.Name}}</strong></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-warning" data-ng-click="deleteProduct(user);">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
