@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 app.controller('UserController', function ($scope, userService) {
 
     init();
@@ -50,7 +50,6 @@ app.controller('UserController', function ($scope, userService) {
     }
 
 
-=======
 app.controller('UserController', function ($scope) {
 
 	init();
@@ -127,6 +126,5 @@ app.controller('UserController', function ($scope) {
 		Role: 'adm',
 		Password:'1234567'
     }];
->>>>>>> ASAF-GITHUB/master
 
 });
