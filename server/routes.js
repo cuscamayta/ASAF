@@ -8,29 +8,30 @@ var errors = require('./components/errors');
 
 module.exports = function (app) {
 
-    // Insert routes below
+	// Insert routes below
 
 
-    //    console.log( __dirname + '/'+'api/common/common.route');
-    //  app.use('/api/product', require('./api/product'));
-    //	app.use('/api/product', require('./api/country'));
-    //    app.use('/api/country', require(__dirname + '/' + 'api/common/common.route')(modules.country));
-    app.use('/api/users', require('./api/user'));
+	//    console.log( __dirname + '/'+'api/common/common.route');
+	//  app.use('/api/user', require('./api/user'));
+	app.use('/api/country', require('./api/country'));
+	app.use('/api/product', require('./api/product'));
+	//    app.use('/api/country', require(__dirname + '/' + 'api/common/common.route')(modules.country));
+	app.use('/api/users', require('./api/user'));
 
-    app.use('/auth', require('./auth'));
+	app.use('/auth', require('./auth'));
 
-    // All undefined asset or api routes should return a 404
-    app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-        .get(errors[404]);
+	// All undefined asset or api routes should return a 404
+	app.route('/:url(api|auth|components|app|bower_components|assets)/*')
+		.get(errors[404]);
 
-    // All other routes should redirect to the index.html
-    app.route('/*')
-        .get(function (req, res) {
-            res.sendfile(app.get('appPath') + '/index.html');
-        });
+	// All other routes should redirect to the index.html
+	app.route('/*')
+		.get(function (req, res) {
+			res.sendfile(app.get('appPath') + '/index.html');
+		});
 };
 
 
 var modules = {
-    country: 'country/country.model'
+	country: 'country/country.model'
 }

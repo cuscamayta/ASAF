@@ -9,13 +9,19 @@ var config = require('./config/environment');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
+
+
+//mongoose.connect('mongodb://test:password@ds049219.mongolab.com:49219/asaf', function () {
+//	console.log('conectado a la db success');
+//});
+//mongodb://<dbuser>:<dbpassword>@ds049219.mongolab.com:49219/asaf
 /*mongoose.connect(config.mongo.uri, function(err, res) {
   if(err) throw err;
   console.log('Connected to Database');
 });*/
 
-global.rootRequire = function(name) {
-    return require(__dirname + '/' + name);
+global.rootRequire = function (name) {
+	return require(__dirname + '/' + name);
 }
 
 // Populate DB with sample data
@@ -25,8 +31,8 @@ global.rootRequire = function(name) {
 var app = express();
 var server = require('http').createServer(app);
 var socketio = require('socket.io')(server, {
-  serveClient: (config.env === 'production') ? false : true,
-  path: '/socket.io-client'
+	serveClient: (config.env === 'production') ? false : true,
+	path: '/socket.io-client'
 });
 require('./config/socketio')(socketio);
 require('./config/express')(app);
@@ -34,7 +40,7 @@ require('./routes')(app);
 
 // Start server
 server.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+	console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
 // Expose app
