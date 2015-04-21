@@ -28,10 +28,10 @@
                         <td>{{user.EnterDate}}</td>
                         <td>{{user.Role}}</td>
                         <td>
-                            <a href="#" class="options-grid" data-ng-click='showModalEditProduct($event,user);'>
+                            <a href="#" class="options-grid" data-ng-click='showModalEditUser($event,user);'>
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="#" class="options-grid" data-ng-click='deleteProduct($event,user);'>
+                            <a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                             <a href="#" class="options-grid" data-ng-click='viewProduct($event,user);'>
@@ -64,11 +64,11 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Apellido</label>
-                        <input type="text" class="form-control" data-ng-model='user.LastName' id="description" placeholder="Descripcion">
+                        <input type="text" class="form-control" data-ng-model='user.LastName' id="description" placeholder="Apellido">
                     </div>
                     <div class="form-group">
                         <label for="type-user">Fecha de Ingreso</label>
-                        <input type="text" class="form-control" data-ng-model='user.EnterDate' id="type-product" placeholder="Tipo Producto">
+                        <input type="text" data-datepicker class="form-control" data-ng-model='user.EnterDate' id="type-product" placeholder="Fecha de Ingreso">
                     </div>
                     <div class="form-group">
                         <label for="code">Rol de Usuario</label>
@@ -78,29 +78,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-ng-click='addProduct();'>Guardar</button>
+                <button type="button" class="btn btn-primary" data-ng-click='saveUser();'>Guardar</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<!--modal confirmation-->
-<div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Confirmacion</h4>
-            </div>
-            <div class="modal-body">
-                <span>Estas seguro de Eliminar: <strong> {{user.Name}}</strong></span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-warning" data-ng-click="deleteProduct(user);">Confirmar</button>
-            </div>
-        </div>
-    </div>
-</div>
+<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-user' button-cancel="true" message="Estas seguro de Eliminar {{user.Name}}" confirm-action="deleteUser()"></data-modal-confirmation>

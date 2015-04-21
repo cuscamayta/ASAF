@@ -1,8 +1,9 @@
 app.directive('modalConfirmation', function ($compile) {
 	return {
 		restrict: 'E',
+		replace: true,
 		scope: {
-			modalId: '=',
+			modalId: '@modalId',
 			title: '@title',
 			message: '@message',
 			icon: '@icon',
@@ -13,14 +14,7 @@ app.directive('modalConfirmation', function ($compile) {
 		},
 		templateUrl: '/app/partials/shared/modalConfirmation.html',
 		link: function (scope, element, attrs) {
-			//            scope.$watch("title", function(newvalue) {
-			scope.modalId = 'modal-confirmation-'.concat(scope.modalId);
-			scope.header = scope.title;
-			// localize.getLocalizedString(scope.title);
-			scope.content = scope.message; // localize.getLocalizedString(scope.message);
-			scope.modalIcon = scope.icon == undefined ? 'icon-warning-sign' : scope.icon; // localize.getLocalizedString(scope.icon);
-			//            });
-
+			scope.modalIcon = scope.icon == undefined ? 'icon-warning-sign' : scope.icon;
 
 			scope.onConfirmAction = function () {
 				scope.confirmAction();
@@ -29,8 +23,6 @@ app.directive('modalConfirmation', function ($compile) {
 			scope.onCancelAction = function () {
 				if (scope.cancelAction)
 					scope.cancelAction();
-				else
-					$('#modal-confirmation-'.concat(scope.modalId));
 			};
 
 		}

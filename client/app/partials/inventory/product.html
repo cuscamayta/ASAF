@@ -80,32 +80,10 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-ng-click='saveProduct();'>Guardar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click='saveProduct();'>Guardar</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<modalConfirmation title="Confirmacion" button-accept="true" modal-id='modalConfirmationId' button-cancel="true" message="Estas seguro de Eliminar <strong> {{product.Name}}</strong>" confirm-action="deleteProduct()"></modalConfirmation>
-
-<!--modal confirmation-->
-<!--
-<div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">Confirmacion</h4>
-			</div>
-			<div class="modal-body">
-				<span>Estas seguro de Eliminar: <strong> {{product.Name}}</strong></span>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-warning" data-ng-click="deleteProduct(product);">Confirmar</button>
-			</div>
-		</div>
-	</div>
-</div>
--->
+<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-product' button-cancel="true" message="Estas seguro de Eliminar {{product.Name}}" confirm-action="deleteProduct()"></data-modal-confirmation>

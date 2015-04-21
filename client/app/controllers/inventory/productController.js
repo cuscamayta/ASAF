@@ -2,11 +2,9 @@ app.controller('ProductController', function ($scope, productService) {
 
 	init();
 
-	$scope.product = {};
-
 	function init() {
-		loadDataInformation();
-
+		$scope.product = {};
+		loadProducts();
 	}
 
 	$scope.showModalAddProduct = function (e) {
@@ -19,13 +17,13 @@ app.controller('ProductController', function ($scope, productService) {
 	$scope.saveProduct = function () {
 		var response = $scope.product._id ? productService.edit($scope.product) : productService.save($scope.product);
 		response.then(function (data) {
-			loadDataInformation();
+			loadProducts();
 			toastr.success("Satisfactoriamente Guardado");
 		});
 		$('#modal-product').modal('hide');
 	}
 
-	function loadDataInformation() {
+	function loadProducts() {
 		var response = productService.getProducts();
 		response.then(function (products) {
 			$scope.products = products;
@@ -43,15 +41,13 @@ app.controller('ProductController', function ($scope, productService) {
 	$scope.showModalConfirmation = function (e, product) {
 		e.preventDefault();
 		$scope.product = product;
-		$scope.modalConfirmationId = 'product';
 		$('#modal-confirmation-product').modal();
 	}
 
 	$scope.deleteProduct = function () {
 		var response = productService.remove($scope.product._id);
 		response.then(function (data) {
-			$('#modal-confirmation').modal('hide');
-			loadDataInformation();
+			loadProducts();
 			toastr.success("Satisfactoriamente Eliminado");;
 		});
 	}
@@ -61,12 +57,12 @@ app.controller('ProductController', function ($scope, productService) {
 	$scope.productTypes = [{
 		Name: "Tipo 001",
 		Description: "Description Type"
-	}, {
+    }, {
 		Name: "Tipo 00145",
 		Description: "Description Type"
-	}, {
+    }, {
 		Name: "Tipo 005251",
 		Description: "Description Type"
-	}];
+    }];
 
 });

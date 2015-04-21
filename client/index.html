@@ -5,13 +5,14 @@
 	<title>ASAF System</title>
 	<link href="public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="public/vendor/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+	<link rel="stylesheet" href="public/vendor/jquery-ui-1.11.1/jquery-ui.css">
 	<link rel="stylesheet" href="public/vendor/toastr/toastr.css">
 	<link href="Content/customerManagementStyles.css" rel="stylesheet" />
 </head>
 
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+	<div  id="navbar-main" class="navbar navbar-inverse navbar-fixed-top " role="navigation">
 		<div class="container">
 
 			<div class="navbar-header">
@@ -26,6 +27,7 @@
 				</a>
 			</div>
 
+<!--
 			<div class="navbar-collapse navbar-right collapse" data-ng-controller='NavbarController'>
 				<ul class="nav navbar-nav">
 					<li data-ng-class="{'active':getClass('/inicio')}"><a href="#/inicio">Dashboard</a>
@@ -60,6 +62,8 @@
 					</li>
 				</ul>
 			</div>
+-->
+
 			<!--/.nav-collapse -->
 		</div>
 	</div>
@@ -116,6 +120,7 @@
 
 	<!-- UI Libs -->
 	<script src="Scripts/bootstrap.js"></script>
+	<script src="public/vendor/jquery-ui-1.11.1/jquery-ui.js"></script>
 	<script src="public/vendor/toastr/toastr.js"></script>
 
 	<!--custom libs-->
@@ -124,6 +129,7 @@
 	<!-- App libs -->
 	<script src="app/app.js"></script>
 	<script src="app/directives/animatedView.js"></script>
+	<script src="app/directives/datepicker.js"></script>
 	<script src="app/controllers/home/homeController.js"></script>
 	<script src="app/controllers/home/navbarController.js"></script>
 	<script src="app/services/home/homeService.js"></script>
@@ -132,7 +138,12 @@
 	<script src="app/services/inventory/productService.js"></script>
 	<script src="app/controllers/security/userController.js"></script>
 	<script src="app/directives/modalConfirmation.js"></script>
-    <script src="app/services/security/userService.js"></script>
+	<script src="app/services/security/userService.js"></script>
+	<script src="app/controllers/inventory/typeProductController.js"></script>
+	<script src="app/services/inventory/typeProductService.js"></script>
+	<script src="app/controllers/sales/salesController.js"></script>
+	<script src="app/services/sales/salesService.js"></script>
+	<script src="app/controllers/security/securityController.js"></script>
 
 	<!--
     <script src="app/controllers/controllers.js"></script>

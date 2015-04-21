@@ -15,8 +15,9 @@ module.exports = function (app) {
 	//  app.use('/api/user', require('./api/user'));
 	app.use('/api/country', require('./api/country'));
 	app.use('/api/product', require('./api/product'));
+	app.use('/api/typeProduct', require('./api/typeProduct'));
 	//    app.use('/api/country', require(__dirname + '/' + 'api/common/common.route')(modules.country));
-	app.use('/api/users', require('./api/user'));
+	app.use('/api/user', require('./api/user'));
 
 	app.use('/auth', require('./auth'));
 

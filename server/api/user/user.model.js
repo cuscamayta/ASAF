@@ -4,10 +4,11 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 
-var ProductSchema = new Schema({
-	Name: Schema.ObjectId,
+var UserSchema = new Schema({
+	UserId: Schema.ObjectId,
+	Name: String,
 	LastName: String,
-	EnterDate: String,
+	EnterDate: Date,
 	Role: String
 })
 

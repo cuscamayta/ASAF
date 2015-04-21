@@ -26,6 +26,15 @@ app.config(function ($routeProvider) {
 			controller: 'UserController',
 			templateUrl: '/app/partials/security/user.html'
 		})
+		.when('/ventas', {
+			controller: 'SalesController',
+			templateUrl: '/app/partials/sales/sales.html'
+		})
+		.when('/login', {
+			controller: 'SecurityController',
+			templateUrl: '/app/partials/security/login.html'
+		})
+
 
 	.otherwise({
 		redirectTo: '/inicio'
