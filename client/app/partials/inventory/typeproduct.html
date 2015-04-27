@@ -1,0 +1,74 @@
+<div class="container view">
+	<div class="row">
+		<h2 id="tables-condensed">Lista de Tipo Productos<a href="#tables-condensed"></a></h2>
+	</div>
+	<div class="row">
+		<button type="button" class="btn btn-primary pull-right" data-ng-click='showModalAddTypeProduct($event)'>Nuevo Tipo Producto</button>
+		<br>
+		<br>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nombre</th>
+						<th>Descripcion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat='typeProduct in typeProducts'>
+						<td>{{$index + 1}}</td>
+						<td>{{typeProduct.Name}}</td>
+						<td>{{typeProduct.Description}}</td>
+						<td>
+							<a href="#" class="options-grid" data-ng-click='showModalEditTypeProduct($event,typeProduct);'>
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,typeProduct);'>
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+							<a href="#" class="options-grid" data-ng-click='viewProduct($event,typeProduct);'>
+								<span class="glyphicon glyphicon-search"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-type-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">{{typeProduct.title}}</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="product-name">Nombre</label>
+						<input type="text" class="form-control" data-ng-model='typeProduct.Name' id="product-name" placeholder="Nombre Producto">
+					</div>
+					<div class="form-group">
+						<label for="description">Descripcion</label>
+						<input type="text" class="form-control" data-ng-model='typeProduct.Description' id="description" placeholder="Descripcion">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click='saveTypeProduct();'>Guardar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-typeproduct' button-cancel="true" message="Estas seguro de Eliminar {{typeProduct.Name}}" confirm-action="deleteTypeProduct()"></data-modal-confirmation>
