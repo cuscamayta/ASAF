@@ -1,0 +1,158 @@
+<div class="container view">
+	<div class="row">
+		<div class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-search">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div id="navbar-search" class="navbar-collapse collapse">
+					<div>
+						<form class="navbar-form navbar-right">
+							<input type="button" class="form-control btn btn-success" value="Guardar">
+							<input type="button" class="form-control btn btn-warning" value="Cancelar">
+							<input type="button" class="form-control btn btn-primary" value="Cobrar">
+							<input type="text" class="form-control" placeholder="Buscar Cliente...">
+							<input type="text" class="form-control" placeholder="Buscar Producto...">
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Ope.</th>
+							<th>Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat='sales in sales'>
+							<td>
+								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+									<span class="glyphicon glyphicon-delete"></span>
+								</a>
+							</td>
+							<td>{{sale.Product}}</td>
+							<td>{{sale.Precio}}</td>
+							<td>{{sale.Cantidad}}</td>
+							<td>{{sale.Total}}</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+							<td>Produc 001</td>
+							<td>20</td>
+							<td>5</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+							<td>Produc 001</td>
+							<td>20</td>
+							<td>5</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+							<td>Produc 001</td>
+							<td>20</td>
+							<td>5</td>
+							<td>100</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-8">
+				<table class="table product-row">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Producto</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat='product in products'>
+							<td>
+								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+									<span class="glyphicon glyphicon-delete"></span>
+								</a>
+							</td>
+							<td>{{product.Name}}</td>
+							<td>{{product.Price}}</td>
+						</tr>
+						<tr class="list-content">
+							<td>
+								<img src="Content/images/report.png" class='product-preview' alt="">
+							</td>
+							<td>Produc 001</td>
+							<td>20</td>
+						</tr>
+						<tr class="list-content">
+							<td>
+								<img src="Content/images/report.png" class='product-preview' alt="">
+							</td>
+							<td>Produc 002</td>
+							<td>20</td>
+						</tr>
+						<tr class="list-content">
+							<td>
+								<img src="Content/images/report.png" class='product-preview' alt="">
+							</td>
+							<td>Produc 003</td>
+							<td>20</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+	<style>
+		.product-preview {
+			width: 45px;
+			height: 45px;
+		}
+
+		.list-content {
+			font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+		}
+
+		.list-content:hover {
+			background-color: #f0ad4e;
+			cursor: pointer;
+			color: white;
+		}
+		/*
+		.list-content td {
+			padding-top: 20px !important;
+		}
+*/
+	</style>

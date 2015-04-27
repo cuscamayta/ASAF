@@ -1,0 +1,55 @@
+.view {
+	left: 60px;
+	position: relative;
+	opacity: 0.0;
+}
+
+.text-center {
+	text-align: center;
+	color: aliceblue;
+}
+
+.logo {
+	font-size: 25px;
+	font-weight: bold;
+	color: white !important;
+	margin-top: -10px !important;
+}
+
+.options-grid {
+	margin-right: 8px;
+	color: rgb(255, 109, 5)!important;
+}
+
+.ui-datepicker-month.ui-datepicker-year {
+	color: #000 !important;
+}
+/*styles for login screen*/
+
+.panel-heading {
+	padding: 5px 15px;
+}
+
+.panel-footer {
+	padding: 1px 15px;
+	color: #A0A0A0;
+}
+
+.profile-img {
+	width: 96px;
+	height: 96px;
+	margin: 0 auto 10px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.login-container {
+	margin-top: 110px !important;
+}
+
+.error-login {
+	color: #dd4b39;
+	line-height: 17px;
+}
