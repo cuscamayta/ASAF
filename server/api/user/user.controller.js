@@ -71,6 +71,7 @@ exports.destroy = function (req, res) {
 	});
 };
 
+<<<<<<< HEAD
 exports.login = function (req, res) {
 	console.log('req');
 	console.log(req.body);
@@ -94,3 +95,9 @@ exports.login = function (req, res) {
 function handleError(res, err) {
 	return res.send(500, err);
 }
+=======
+function handleError(res, err) {
+	return res.send(500, err);
+}
+
+>>>>>>> c88a6951759647e87b874b1e9ee404781fec620e

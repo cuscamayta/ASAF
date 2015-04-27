@@ -34,11 +34,14 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
+<<<<<<< HEAD
 	console.log('request');
 	console.log(req);
 	console.log('response');
 	console.log(res);
 
+=======
+>>>>>>> c88a6951759647e87b874b1e9ee404781fec620e
 	if (req.body._id) {
 		delete req.body._id;
 	}

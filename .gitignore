@@ -1,1 +1,20 @@
+<<<<<<< HEAD
 node_modules
+=======
+<<<<<<< HEAD
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example .gitignore files: https://github.com/github/gitignore
+/bower_components/
+/node_modules/
+=======
+node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+dist
+/server/config/local.env.js
+>>>>>>> ASAF-GITHUB/master
+>>>>>>> c88a6951759647e87b874b1e9ee404781fec620e
