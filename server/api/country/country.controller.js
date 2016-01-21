@@ -1,16 +1,47 @@
 'use strict';
 
 var _ = require('lodash');
+//var mongoose = require('mongoose');
 var Country = require('./country.model');
+var parentSchema = require('./parent.model');
 
 // Get list of things
 exports.index = function (req, res) {
-	Country.find(function (err, country) {
+	var aaron = new Country.Person({ name: 'Aaron', age: 100 });
+
+	aaron.save(function (err) {
+		if (err) { console.log(err); };
+
+
+		for (var i = 0; i <= 10; i++) {
+			var story1 = new Country.Story({
+				title: "A man who cooked Nintendo" + i.toString()
+				, _creator: aaron._id
+			});
+
+			saveStory(story1);
+		}
+
+		function saveStory(story) {
+			story.save(function (err) {
+				if (err) { console.log('error'); };
+			});
+		}
+	});
+
+	Country.Story.find(function (err, country) {
 		if (err) {
 			return handleError(res, err);
 		}
 		return res.json(200, country);
 	});
+	
+	//	Country.Story.find(function (err, country) {
+	//		if (err) {
+	//			return handleError(res, err);
+	//		}
+	//		return res.json(200, country);
+	//	});
 };
 
 // Get a single product
@@ -28,6 +59,7 @@ exports.show = function (req, res) {
 
 // Creates a new product in the DB.
 exports.create = function (req, res) {
+
 	Country.create(req.body, function (err, product) {
 		if (err) {
 			return handleError(res, err);
@@ -38,10 +70,7 @@ exports.create = function (req, res) {
 
 // Updates an existing product in the DB.
 exports.update = function (req, res) {
-<<<<<<< HEAD
 
-=======
->>>>>>> c88a6951759647e87b874b1e9ee404781fec620e
 	if (req.body._id) {
 		delete req.body._id;
 	}

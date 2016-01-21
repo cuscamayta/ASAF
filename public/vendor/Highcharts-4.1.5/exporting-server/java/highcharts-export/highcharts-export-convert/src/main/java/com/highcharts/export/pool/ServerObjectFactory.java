@@ -191,13 +191,13 @@ public class ServerObjectFactory implements ObjectFactory<Server> {
 
 	@PostConstruct
 	public void afterBeanInit() {
-
+		
 		URL u = getClass().getProtectionDomain().getCodeSource().getLocation();
 		URLClassLoader jarLoader = new URLClassLoader(new URL[]{u}, Thread.currentThread().getContextClassLoader());
 		String filenames[] = new String[] {"highcharts-convert.js","highcharts.js","highstock.js","jquery.1.9.1.min.js","map.js","highcharts-more.js", "data.js", "drilldown.js", "funnel.js", "heatmap.js", "highcharts-3d.js", "no-data-to-display.js", "solid-gauge.js", "broken-axis.js"};
-
+		
 		for (String filename : filenames) {
-
+		
 			ClassPathResource resource = new ClassPathResource("phantomjs/" + filename, jarLoader);
 			if (resource.exists()) {
 				Path path = Paths.get(TempDir.getPhantomJsDir().toString(), filename);
@@ -217,7 +217,7 @@ public class ServerObjectFactory implements ObjectFactory<Server> {
 				logger.debug("Copy javascript file to temp folder, resource doesn't exist: " + filename);
 			}
 		}
-
+		
 	}
 
 

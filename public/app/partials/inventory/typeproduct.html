@@ -1,6 +1,8 @@
 <div class="container view">
 	<div class="row">
-		<h2 id="tables-condensed">Lista de Tipo Productos<a href="#tables-condensed"></a></h2>
+		<h2 id="tables-condensed">Lista de Tipo Productos
+			<a href="#tables-condensed"></a>
+		</h2>
 	</div>
 	<div class="row">
 		<button type="button" class="btn btn-primary pull-right" data-ng-click='showModalAddTypeProduct($event)'>Nuevo Tipo Producto</button>
@@ -29,8 +31,7 @@
 							<a title="Eliminar Tipo Producto" href="#" class="options-grid" data-ng-click='showModalConfirmation($event,typeProduct);'>
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
-<!--
-							<a href="#" class="options-grid" data-ng-click='viewProduct($event,typeProduct);'>
+							<!-- <a href="#" class="options-grid" data-ng-click='viewProduct($event,typeProduct);'>
 								<span class="glyphicon glyphicon-search"></span>
 							</a>
 -->
@@ -41,36 +42,34 @@
 		</div>
 	</div>
 </div>
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="modal-type-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-type-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title" id="myModalLabel">{{typeProduct.title}}</h4>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body">				
 				<form>
 					<div class="form-group">
 						<label for="product-name">Nombre</label>
-						<input type="text" class="form-control" data-ng-model='typeProduct.Name' id="product-name" placeholder="Nombre Producto">
+						<input type="text" class="form-control" data-ng-model='typeProduct.Name' required validate='text-number'   id="product-name" placeholder="Nombre Producto">
 					</div>
 					<div class="form-group">
 						<label for="description">Descripcion</label>
-						<input type="text" class="form-control" data-ng-model='typeProduct.Description' id="description" placeholder="Descripcion">
+						<input type="text" class="form-control" data-ng-model='typeProduct.Description' validate='text'  id="description" placeholder="Descripcion">
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click='saveTypeProduct();'>Guardar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled='!typeProduct.Name' data-ng-click='saveTypeProduct();'>Guardar</button>
 			</div>
 		</div>
 	</div>
 </div>
-
-<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-typeproduct' button-cancel="true" message="Estas seguro de Eliminar {{typeProduct.Name}}" confirm-action="deleteTypeProduct()"></data-modal-confirmation>
+<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-typeproduct' button-cancel="true"
+message="Estas seguro de Eliminar {{typeProduct.Name}}" confirm-action="deleteTypeProduct()"></data-modal-confirmation>

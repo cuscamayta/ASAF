@@ -51,7 +51,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="modal-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-user" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -62,34 +62,34 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<input type="text" class="form-control" data-ng-model='user.Name' id="user-name" placeholder="Nombre Usuario">
+						<input type="text" class="form-control" data-ng-model='user.Name' required validate='text' id="user-name" placeholder="Nombre Usuario">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" data-ng-model='user.LastName' id="description" placeholder="Apellido">
+						<input type="text" class="form-control" data-ng-model='user.LastName' required validate='text' id="description" placeholder="Apellido">
 					</div>
 					<div class="form-group">
-						<input type="text" data-datepicker class="form-control" data-ng-model='user.EnterDate' id="type-product" placeholder="Fecha de Ingreso">
+						<input type="text" data-datepicker class="form-control" required validate='date' data-ng-model='user.EnterDate' id="type-product" placeholder="Fecha de Ingreso">
 					</div>
 					<div class="form-group">
-						<select class="form-control" ng-options="role as role.Name for role in roles" ng-model="user.Role">
+						<select class="form-control" ng-options="role as role.Name for role in roles" ng-model="user.Role" validate>
 							<option default>Seleccione un Rol</option>
 						</select>
 
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" data-ng-model='user.UserName' id="username" placeholder="User Name">
+						<input type="text" class="form-control" data-ng-model='user.UserName' required validate='user' id="username" placeholder="User Name">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" data-ng-model='user.Password' id="password" placeholder="Password">
+						<input type="password" class="form-control" data-ng-model='user.Password' required validate='text-number' id="password" placeholder="Password">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" data-ng-model='user.PasswordHash' id="verify-password" placeholder="Password">
+						<input type="password" class="form-control" data-ng-model='user.PasswordHash' required validate='text-number' id="verify-password" placeholder="Password">
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-ng-click='saveUser();'>Guardar</button>
+				<button type="button" class="btn btn-primary" ng-disabled='!user.Name || !user.LastName || !user.Role || !user.UserName || !user.Password' data-ng-click='saveUser();'>Guardar</button>
 			</div>
 		</div>
 	</div>

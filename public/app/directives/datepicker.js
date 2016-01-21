@@ -32,7 +32,6 @@ app.directive('datepicker', function () {
 					changeMonth: true,
 					onSelect: function (date) {
 						ngModelCtrl.$setViewValue(date);
-
 						scope.$apply();
 					}
 				});

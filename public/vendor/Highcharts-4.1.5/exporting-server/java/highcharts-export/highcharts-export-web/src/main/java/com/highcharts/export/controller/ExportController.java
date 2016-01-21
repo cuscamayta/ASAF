@@ -92,7 +92,7 @@ public class ExportController extends HttpServlet {
 			session.removeAttribute("tempFile");
 
 			if (tempFile != null && !tempFile.isEmpty()) {
-				logger.debug("filename stored in session, read and stream from filesystem");
+				logger.debug("filename stored in session, read and stream from filesystem");				
 				String basename = FilenameUtils.getBaseName(tempFile);
 				String extension = FilenameUtils.getExtension(tempFile);
 
@@ -171,7 +171,7 @@ public class ExportController extends HttpServlet {
 
 	@RequestMapping(value = "/files/{name}.{ext}", method = RequestMethod.GET)
 	public HttpEntity<byte[]> getFile(@PathVariable("name") String name, @PathVariable("ext") String extension) throws SVGConverterException, IOException {
-
+		
 		Path path = Paths.get(TempDir.getOutputDir().toString(), name + "." + extension);
 		String filename = path.toString();
 		MimeType mime = getMime(extension);
@@ -221,7 +221,7 @@ public class ExportController extends HttpServlet {
 
 		return new HttpEntity<byte[]>(stream.toByteArray(), headers);
 	}
-
+	
 	/*
 	 * INSTANCE METHODS
 	 */
@@ -248,7 +248,7 @@ public class ExportController extends HttpServlet {
 				logger.error("The mandatory 'svg' or 'options' POST parameter is undefined.");
 				throw new ServletException(
 						"The mandatory 'svg' or 'options' POST parameter is undefined.");
-			} else {
+			} else {				
 				convertSvg = true;
 				input = svg;
 			}
@@ -299,7 +299,7 @@ public class ExportController extends HttpServlet {
 				logger.error("Parameter width is wrong for value: " + width, nfe.fillInStackTrace());
 				throw new SVGConverterException("Parameter width is wrong for value: " + width);
 			}
-
+			
 		}
 		return null;
 	}

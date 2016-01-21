@@ -24,8 +24,8 @@ public class TempDir {
 	public static Path phantomJsDir;
 
     protected static Logger logger = Logger.getLogger(TempDir.class.getName());
-
-
+	
+	
 	public TempDir() throws IOException {
 		tmpDir = Files.createTempDirectory("export");
 
@@ -34,7 +34,7 @@ public class TempDir {
 
 		outputDir = Files.createDirectory(Paths.get(tmpDir.toString(), "output"));
 		outputDir.toFile().deleteOnExit();
-
+		
 		phantomJsDir = Files.createDirectory(Paths.get(tmpDir.toString(), "phantomjs"));
 		phantomJsDir.toFile().deleteOnExit();
 
@@ -44,7 +44,7 @@ public class TempDir {
 		        FileUtils.deleteQuietly(tmpDir.toFile());
 		    }
 		});
-
+		
 		logger.debug("Highcharts Export Server using " +TempDir.getTmpDir() + " as TEMP folder.");
 	}
 

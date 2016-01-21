@@ -1,7 +1,8 @@
 'use strict';
-
+//var Product = require('./product.model');
 var _ = require('lodash');
-var TypeProduct = require('./typeProduct.model');
+var models = require('../common/Schema'),
+	TypeProduct = models.TypeProduct;
 
 exports.index = function (req, res) {
 	TypeProduct.find(function (err, typeProducts) {

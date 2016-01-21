@@ -27,7 +27,12 @@ function DefaultSelector(t) {
 String.prototype.toDate = function () {
 	var date = moment(this).format('DD/MM/YYYY');
 	return date;
-}
+};
+
+Date.prototype.toDateString = function () {
+	var date = moment(this).format('DD/MM/YYYY');
+	return date;
+};
 
 Array.prototype.select = Array.prototype.map || function (selector, context) {
 	context = context || window;
@@ -380,4 +385,10 @@ toastr.options = {
 
 String.prototype.toStringDate = function () {
 	return new Date(this);
+};
+
+function executeAfterThisTime(time, onTimeFinished) {
+    setTimeout(function () {
+        onTimeFinished();
+    }, time);
 }

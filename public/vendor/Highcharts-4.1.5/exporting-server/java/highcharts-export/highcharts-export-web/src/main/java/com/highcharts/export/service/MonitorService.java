@@ -35,7 +35,7 @@ public class MonitorService {
 	public int getCountError() {
 		return error.get();
 	}
-
+    
     private long calculateRatePerMinute() {
         long rate = 1; // prevent dividing by zero
         long elapsedMinutes = calculateElapsedMinutes();
@@ -44,15 +44,15 @@ public class MonitorService {
 		}
         return rate;
     }
-
+    
     private long calculateElapsedMinutes() {
         return (System.currentTimeMillis() - start)/60000;
     }
-
+    
     public String report() {
         long elapsedMinutes = calculateElapsedMinutes();
         String report;
-
+        
         if (elapsedMinutes > 60) {
 			report = String.format("##### HOURLY REPORT request count: %d Error count: %d #####", this.getCount(), this.getCountError());
 			// resetting
@@ -63,7 +63,7 @@ public class MonitorService {
             report = String.format("request count: %d, Error count: %d, Elapsed time (min): %d, Rate: %d",
                 this.getCount(), this.getCountError(), elapsedMinutes, calculateRatePerMinute());
         }
-
+        
         return report;
     }
 }

@@ -459,7 +459,7 @@
 }
 
 @media (min-width: 1200px) {
-
+  
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -829,7 +829,7 @@
   button.win-command .win-commandicon {
     margin: 0 8px;
     /* 2px margin for focus */
-
+  
   }
   .win-commandlayout {
     min-height: 68px;

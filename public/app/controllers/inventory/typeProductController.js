@@ -51,6 +51,6 @@ app.controller('TypeProductController', function ($scope, typeProductService) {
 			toastr.success("Satisfactoriamente Eliminado");;
 		});
 	}
-
+		
 
 });

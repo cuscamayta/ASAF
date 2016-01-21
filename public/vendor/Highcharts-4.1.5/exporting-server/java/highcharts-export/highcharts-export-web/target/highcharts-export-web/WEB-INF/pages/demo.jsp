@@ -151,19 +151,19 @@
 		<form id="exportForm" action="./" method="POST">
 
 			<h1>Highcharts Export Server</h1>
-
+		
 			<p>This page allows you to experiment with different options for the export server.</p>
 
 			<div>
 				<input id="options" title="Highcharts config object" type="radio"
-					name="content" value="options">
+					name="content" value="options"> 
 				<label for="options"
-					class="radio">Highcharts config object (JSON)</label>
+					class="radio">Highcharts config object (JSON)</label> 
 			</div>
 
 			<div>
 				<input id="svg" title="svg xml content" type="radio" name="content"
-					value="svg">
+					value="svg"> 
 				<label for="svg" class="radio">SVG
 					(XML) </label>
 			</div>
@@ -176,7 +176,7 @@
 						file="/WEB-INF/jspf/config.js"%></textarea>
 			</div>
 			<div id="svg"></div>
-			<label for="type">Image file format</label>
+			<label for="type">Image file format</label> 
 			<select name="type" id="type">
 				<option value="image/png">image/png</option>
 				<option value="image/jpeg">image/jpeg</option>
@@ -187,8 +187,8 @@
 			<label for="width">Width</label>
 			<div class="info">The exact pixel width of the exported image.
 				Defaults to <code>chart.width</code> or <code>600px</code>. Maximum width is <code>2000px</code>.</div>
-
-			<input id="width" name="width" type="text" value="" /> <br/>
+			
+			<input id="width" name="width" type="text" value="" /> <br/> 
 
 			<label for="scale">Scale</label>
 			<div class="info">A scaling factor for a higher image
@@ -196,8 +196,8 @@
 				precedence over scaling.</div>
 			<input id="scale" name="scale" 	type="text" value="" />
 
-
-
+			
+			
 			<label for="constructor">Constructor</label>
 			<div class="info">
 				Either <code>Chart</code> or <code>StockChart</code> depending on what product you use.

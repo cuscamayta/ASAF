@@ -2,6 +2,15 @@
 	left: 60px;
 	position: relative;
 	opacity: 0.0;
+	margin-top: 55px !important;
+}
+
+a[ng-click]{
+    cursor: pointer;
+}
+
+a[data-ng-click]{
+    cursor: pointer;
 }
 
 .text-center {
@@ -53,3 +62,66 @@
 	color: #dd4b39;
 	line-height: 17px;
 }
+
+/*styles for sales*/
+.product-preview {
+			width: 45px;
+			height: 45px;
+		}
+
+		.list-content {
+			font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+		}
+
+		.list-content:hover {
+			background-color: #f0ad4e;
+			cursor: pointer;
+			color: white;
+		}
+		
+		
+/*		styles for directive*/
+/*.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+  width: 60px;
+}*/
+
+.error {
+    background-color: #ffe4e1;
+    border-color: #BA2D2D;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: #000;
+    font-size: 9pt;
+    margin-left: 7px;
+    margin-top: 4px;
+    padding: 6px 10px;
+    position: absolute;
+}
+
+    .error:before {
+        border-color: transparent #BA2D2D transparent transparent;
+        border-style: solid;
+        border-width: 6px 8px;
+        content: "";
+        display: block;
+        height: 0;
+        left: -16px;
+        position: absolute;
+        top: 5px;
+        width: 0;
+    }

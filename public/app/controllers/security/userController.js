@@ -26,12 +26,7 @@ app.controller('UserController', function ($scope, userService) {
 
 	function loadUsers() {
 		var response = userService.getUsers();
-		response.then(function (users) {
-//			angular.forEach(users, function (index, user) {
-//				user.EnterDate = toFormatDate(user.EnterDate);
-//			});
-//			console.log('users');
-//			console.log(users);
+		response.then(function (users) {			
 			$scope.users = users;
 		});
 	}

@@ -51,7 +51,7 @@
          // You already have access to the DOM element and
          // the options via the instance, e.g. this.element
          // and this.options
-         // you can add more functions like the one below and
+         // you can add more functions like the one below and 
          // call them like so: this.yourotherfunction(this.element, this.options).
       },
 
@@ -104,11 +104,11 @@
 //            $("a#pin-charms").removeClass("active");
 //         }
 //      }
-
+      
    };
 
 
-   // A really lightweight plugin wrapper around the constructor,
+   // A really lightweight plugin wrapper around the constructor, 
    // preventing against multiple instantiations and allowing any
    // public function (ie. a function whose name doesn't start
    // with an underscore) to be called via the jQuery plugin,
@@ -141,7 +141,7 @@
 (function ($)
 {
    $("#charms").charms();
-
+   
    $('.close-charms').click(function(e){
       e.preventDefault();
       $("#charms").charms('close');

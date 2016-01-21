@@ -1,34 +1,31 @@
 <div class="container view">
 	<div class="row">
-		<div class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-search">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div id="navbar-search" class="navbar-collapse collapse">
-					<div>
-						<form class="navbar-form navbar-right">
-							<input type="button" class="form-control btn btn-success" value="Guardar">
-							<input type="button" class="form-control btn btn-warning" value="Cancelar">
-							<input type="button" class="form-control btn btn-primary" value="Cobrar">
-							<input type="text" class="form-control" placeholder="Buscar Cliente...">
-							<input type="text" class="form-control" placeholder="Buscar Producto...">
-						</form>
+		<div class="row">
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-search">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div id="navbar-search" class="navbar-collapse collapse">
+						<div>
+							<form class="navbar-form navbar-right">
+								<input type="button" class="form-control btn btn-warning" data-ng-click="cancelSale()" value="Cancelar">
+								<input type="button" class="form-control btn btn-primary" data-ng-click="showModalRecoverSale()" value="Cobrar">
+								<input type="text" class="form-control" validate='text-number' data-ng-model="searchProduct" placeholder="Buscar Producto...">
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-
 		<div class="row">
 			<div class="col-md-4">
-				<table class="table">
+				<table class="table" data-ng-init="sales.total = 0">
 					<thead>
 						<tr>
 							<th>Ope.</th>
@@ -39,120 +36,189 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr data-ng-repeat='sales in sales'>
+						<tr data-ng-repeat="product in productSales| orderBy: 'Name'">
 							<td>
-								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
-									<span class="glyphicon glyphicon-delete"></span>
-								</a>
-							</td>
-							<td>{{sale.Product}}</td>
-							<td>{{sale.Precio}}</td>
-							<td>{{sale.Cantidad}}</td>
-							<td>{{sale.Total}}</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
+								<a class="options-grid" data-ng-click='deleteProductSale(product);'>
 									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-							</td>
-							<td>Produc 001</td>
-							<td>20</td>
-							<td>5</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
-									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-							</td>
-							<td>Produc 001</td>
-							<td>20</td>
-							<td>5</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
-									<span class="glyphicon glyphicon-remove"></span>
-								</a>
-							</td>
-							<td>Produc 001</td>
-							<td>20</td>
-							<td>5</td>
-							<td>100</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-8">
-				<table class="table product-row">
-					<thead>
-						<tr>
-							<th></th>
-							<th>Producto</th>
-							<th>Precio</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr data-ng-repeat='product in products'>
-							<td>
-								<a href="#" class="options-grid" data-ng-click='showModalConfirmation($event,user);'>
-									<span class="glyphicon glyphicon-delete"></span>
 								</a>
 							</td>
 							<td>{{product.Name}}</td>
 							<td>{{product.Price}}</td>
-						</tr>
-						<tr class="list-content">
 							<td>
-								<img src="Content/images/report.png" class='product-preview' alt="">
+								<edit-in-place value="product.Quantity" model='product' blur-event='updateSubTotal'></edit-in-place>
 							</td>
-							<td>Produc 001</td>
-							<td>20</td>
-						</tr>
-						<tr class="list-content">
-							<td>
-								<img src="Content/images/report.png" class='product-preview' alt="">
-							</td>
-							<td>Produc 002</td>
-							<td>20</td>
-						</tr>
-						<tr class="list-content">
-							<td>
-								<img src="Content/images/report.png" class='product-preview' alt="">
-							</td>
-							<td>Produc 003</td>
-							<td>20</td>
+							<td>{{product.Total}}</td>
 						</tr>
 					</tbody>
+					<tfoot>
+						<tr style="background-color:#ECB270">
+							<th align=left colspan=4>Total</th>
+							<th>{{totalSale}}</th>
+						</tr>
+					</tfoot>
 				</table>
+			</div>
+			<div class="col-md-8" data-ng-show="isSaleFinish">
+				<div style="width: 265px; font-size: 11px;" id="invoice-file">
+					<div>RECIBO</div>
+					<div>
+						<label>{{invoice.companyName}}</label>
+						<label>{{invoice.subsidiary}}</label>
+						<label>{{invoice.address}}</label>
+						<label>Telefono {{invoice.phone}}</label>
+						<label>Santa Cruz - Bolivia</label>
+					</div>
+					<div>
+						<label>FECHA : {{invoice.date}}</label>
+						<label>SENOR (ES):{{invoice.clientName}}</label>
+						<label>NIT/CI:{{invoice.clientNit}}</label>
+					</div>
+					<!--<div>
+						<label>CANT CONCEPTO P/U TOTAL</label>
+					</div>-->
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>Cant.</th>
+									<th>Concepto</th>
+									<th>P/U</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="product in invoice.productSales">
+									<td>{{product.Quantity}}</td>
+									<td>{{product.Name}}</td>
+									<td>{{product.Price}}</td>
+									<td>{{product.Total}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+						<label>SON:VEINTISEIS 00/{{invoice.total}} Bolivianos</label>
+						</br>
+						<label>EFECTIVO : {{invoice.clientCoin}}</label>
+						</br>
+						<label>CAMBIO:{{invoice.changeCoin}}</label>
+					</div>
+					<div>
+						<label>CAJERO: Jose Perez</label>
+					</div>
+					<div>Comprobante de compra y venta, no valido para ningun tramite</div>
+					<br />
+					<div class="footer">
+						<label>GRACIAS POR SU PREFERENCIA</label>
+					</div>
+				</div>
+				<form class="navbar-form navbar-right">
+					<input type="button" class="form-control btn btn-success" data-ng-click="saveSale()" value="Guardar">
+					<input type="button" class="form-control btn btn-warning" data-ng-click="goBackToSale()" value="Atras">
+				</form>
+			</div>
+			<div class="col-md-8" data-ng-show="!isSaleFinish">
+				<div style="height:500px;overflow: scroll;" scrollable>
+					<table class="table product-row">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Producto</th>
+								<th>Stock</th>
+								<th>Precio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="list-content" data-ng-repeat="product in products| filterStock:searchProduct | orderBy: 'Name'" data-ng-click='productSelect(product)'>
+								<td>
+									<a class="options-grid" data-ng-click='deleteProductSale(product);'>
+										<span style="font-size:20px;" class="glyphicon glyphicon-phone"></span>
+									</a>
+								</td>
+								<td>{{product.Name}}</td>
+								<td>{{product.Stock}}</td>
+								<td>{{product.Price}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-
-
-
+	<!--modal-->
+	<div class="modal fade" id="modal-recover" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Cobrar</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="product-name">Monto Total</label>
+							<input type="text" readonly class="form-control" data-ng-model='totalSale' placeholder="Monto Total Venta">
+						</div>
+						<div class="form-group">
+							<label for="description">Monto</label>
+							<input type="text" class="form-control" data-ng-model='totalRecover' placeholder="Monto Cobro">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" data-ng-disabled="!totalRecover || totalSale >= (totalRecover+1)" class="btn btn-primary" data-dismiss="modal" data-ng-click='recoverSale();'>Cobrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<style>
-		.product-preview {
-			width: 45px;
-			height: 45px;
+		#invoice-file label {
+			display: block;
+			margin: 5px 0;
 		}
-
-		.list-content {
+		
+		#invoice-file {
 			font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-			font-size: 16px;
+			font-weight: normal;
+			font-style: normal;
+			width: 265px;
+			font-size: 10px;
+			border: solid #BBB 1px;
+			padding: 9px;
+			text-align: center;
 		}
-
-		.list-content:hover {
-			background-color: #f0ad4e;
-			cursor: pointer;
-			color: white;
+		
+		#invoice-file div {
+			border-bottom: solid #BBB 1px;
 		}
-		/*
-		.list-content td {
-			padding-top: 20px !important;
+		
+		#invoice-file .footer {
+			border-bottom: none;
 		}
-*/
+		
+		@media print {
+			label2 {
+				display: block;
+				margin: 5px 0;
+			}
+			#invoice-file {
+				font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+				font-weight: normal;
+				font-style: normal;
+				width: 265px;
+				font-size: 10px;
+				border: solid #BBB 1px;
+				padding: 9px;
+				text-align: center;
+			}
+			#invoice-file div {
+				border-bottom: solid #BBB 1px;
+			}
+			#invoice-file .footer {
+				border-bottom: none;
+			}
+		}
 	</style>

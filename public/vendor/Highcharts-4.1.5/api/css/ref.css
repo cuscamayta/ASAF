@@ -101,7 +101,7 @@ input#search {
 	font-family: "Courier New", Courier, monospace;
 	font-size: 0.9em;
 	background-color: transparent;
-	border: none;
+	border: none;	
 	outline: none;
 	color: #252530;
 	width:80%;
@@ -217,14 +217,14 @@ input#search {
 	color: #666;
 }
 
-#nav h1,
+#nav h1, 
 #details h1,
 #details h2 {
 	font-weight: 100;
 	margin-bottom: 1em;
 }
 
-#nav h1,
+#nav h1, 
 #details h2 {
 	text-transform: uppercase;
 }
@@ -518,7 +518,7 @@ dl#inhMembers dd a,span.returnType {
 }
 
 /* fix for icons changing containers height, affects updateHeights, javascript function */
-#footer-social i:before {
+#footer-social i:before {  
   line-height: 1.5;
 }
 
@@ -553,7 +553,7 @@ dl#inhMembers dd a,span.returnType {
 	#splashText {
 		padding: 30px;
 		text-align: center;
-	}
+	}	
 	#splashText.section {
 		border: none;
 	}

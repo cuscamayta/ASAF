@@ -16,7 +16,7 @@
 		</style>
 		<script type="text/javascript">
 /**
- * This is an advanced demo of setting up Highcharts with the flags feature borrowed from Highstock.
+ * This is an advanced demo of setting up Highcharts with the flags feature borrowed from Highstock. 
  * It also shows custom graphics drawn in the chart area on chart load.
  */
 
@@ -79,7 +79,7 @@ function onChartLoad() {
             fontFamily: "'Brush Script MT', sans-serif"
         })
         .add();
-    big5.attr({
+    big5.attr({ 
         x: centerX - big5.getBBox().width / 2,
         y: centerY + 14
     });
@@ -175,7 +175,7 @@ function onChartLoad() {
                     160,
                     213
                 ).add(pattern);
-
+                
                 Highcharts.addEvent(point, 'mouseOver', function () {
                     empImage.attr({
                         fill: 'url(#pattern-' + point.image + ')'
@@ -187,7 +187,7 @@ function onChartLoad() {
                 });
             }
         });
-    }
+    }    
 }
 
 $(function () {
@@ -197,7 +197,7 @@ $(function () {
             events: {
                 load: onChartLoad
             }
-        },
+        },        
 
         xAxis: {
             type: 'datetime',
@@ -239,7 +239,7 @@ $(function () {
                     y: 30
                 }
             }]
-
+                
         },
 
         title: {
@@ -314,7 +314,7 @@ $(function () {
                 xDateFormat: '%B %Y',
                 valueSuffix: ' % of best month'
             }
-
+            
         }, {
             yAxis: 1,
             name: 'Highsoft employees',
@@ -342,7 +342,7 @@ $(function () {
                 { x: Date.UTC(2014, 9, 1), y: 11, name: 'Anita joined', image: 'Anita' },
                 { x: Date.UTC(2014, 10, 27), y: 11, name: ' ', image: null }
             ]
-
+            
         }]
     };
 
@@ -367,7 +367,7 @@ $(function () {
             data: [
                 { x: Date.UTC(2014, 5, 13), text: 'Highmaps version 1.0 released', title: 'Maps' }
             ],
-            showInLegend: false
+            showInLegend: false            
         }, {
             type: 'flags',
             name: 'Highcharts',

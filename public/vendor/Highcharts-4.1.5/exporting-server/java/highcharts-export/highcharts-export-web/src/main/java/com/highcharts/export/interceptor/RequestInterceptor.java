@@ -29,8 +29,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	private String extractPostRequestBody(HttpServletRequest request) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		Map<String, String[]> paramMap = request.getParameterMap();
-
-		for (Map.Entry<String, String[]> entry : paramMap.entrySet()) {
+		
+		for (Map.Entry<String, String[]> entry : paramMap.entrySet()) {            
             sb.append("\t");
 			sb.append(entry.getKey())
 				.append("=");
@@ -39,7 +39,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
                     sb.append(values[i]);
                     if (i < values.length) {
                         sb.append(", ");
-                    }
+                    } 
                 }
 				sb.append(lineSeparator);
 		}
@@ -48,10 +48,10 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
-            HttpServletResponse response, Object handler) throws Exception {
+            HttpServletResponse response, Object handler) throws Exception {        
 		request.setAttribute("startTime", System.currentTimeMillis());
 		monitor.add();
-
+        
         return true;
     }
 
@@ -65,7 +65,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
 		if (httpStatus == 500) {
 			monitor.addError();
-            logger.log(Level.INFO, "Time={0} :: Time taken(ms) {1}{3} :: RequestMethod {5} :: Status {6} :: Referer={2}{3} :: Request parameters {4}",
+            logger.log(Level.INFO, "Time={0} :: Time taken(ms) {1}{3} :: RequestMethod {5} :: Status {6} :: Referer={2}{3} :: Request parameters {4}", 
                 new Object[]{ new Date().toString(), //0
                     System.currentTimeMillis() - startTime, //1
                     request.getHeader("referer"), //2
@@ -73,9 +73,9 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
                     extractPostRequestBody(request), //4
                     request.getMethod(), //5
                     response.getStatus()}); //6
-
+                    
 		} else {
-            logger.log(Level.INFO, "Time={0} :: Time taken(ms) {1}{3} :: RequestMethod {4} :: Status {5} :: Referer={2}",
+            logger.log(Level.INFO, "Time={0} :: Time taken(ms) {1}{3} :: RequestMethod {4} :: Status {5} :: Referer={2}", 
                 new Object[]{ new Date().toString(), //0
                     System.currentTimeMillis() - startTime, //1
                     request.getHeader("referer"), //2
@@ -83,7 +83,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
                     request.getMethod(), //4
                     response.getStatus()}); //5
         }
-
+        
 
         logger.log(Level.INFO, monitor.report());
     }

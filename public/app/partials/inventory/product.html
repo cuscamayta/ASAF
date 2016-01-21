@@ -1,11 +1,28 @@
 <div class="container view">
 	<div class="row">
-		<h2 id="tables-condensed">Tabla de Productos<a href="#tables-condensed"></a></h2>
+		<h2 id="tables-condensed">Tabla de Productos
+			<a href="#tables-condensed"></a>
+		</h2>
 	</div>
 	<div class="row">
-		<button type="button" class="btn btn-primary pull-right" data-ng-click='showModalAddProduct($event)'>Nuevo Producto</button>
-		<br>
-		<br>
+		<div class="col-lg-5">
+			<!-- <div class="input-group">
+				<input type="text" class="form-control" ng-model="searchProduct" placeholder="Buscar...">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+			</div>-->
+			<div class="form-group">
+				<select class="form-control" ng-model="searchProduct" ng-options="productType.Name for  productType in productTypes">
+					<option value="" selected>Seleccione un tipo producto</option>
+				</select>
+			</div>
+		</div>
+		<div class="row col-lg-7">
+			<button type="button" class="btn btn-primary pull-right" data-ng-click='showModalAddProduct($event)'>Nuevo Producto</button>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -16,19 +33,20 @@
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Tipo Producto</th>
+						<th>Precio</th>
 						<th>Codigo</th>
-						<th>Stock</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat='product in products'>
+					<tr data-ng-repeat="product in products| filter:searchProduct | orderBy: 'Name'">
 						<td>{{$index + 1}}</td>
 						<td>{{product.Name}}</td>
 						<td>{{product.Description}}</td>
 						<td>{{product.ProductType.Name}}</td>
+						<td>{{product.Price}}</td>
 						<td>{{product.Code}}</td>
-						<td>{{product.Stock}}</td>
+						<!-- <td>{{product.Stock}}</td>-->
 						<td>
 							<a title="Editar Producto" href="#" class="options-grid" data-ng-click='showModalEditProduct($event,product);'>
 								<span class="glyphicon glyphicon-pencil"></span>
@@ -36,8 +54,7 @@
 							<a title="Eliminar Producto" href="#" class="options-grid" data-ng-click='showModalConfirmation($event,product);'>
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
-							<!--
-							<a href="#" class="options-grid" data-ng-click='viewProduct($event,product);'>
+							<!-- <a href="#" class="options-grid" data-ng-click='viewProduct($event,product);'>
 								<span class="glyphicon glyphicon-search"></span>
 							</a>
 -->
@@ -48,49 +65,53 @@
 		</div>
 	</div>
 </div>
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false"
+aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title" id="myModalLabel">{{product.title}}</h4>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form>					
 					<div class="form-group">
 						<label for="product-name">Nombre</label>
-						<input type="text" class="form-control" data-ng-model='product.Name' id="product-name" placeholder="Nombre Producto">
+						<input type="text"  class="form-control" require validate='text-number'  data-ng-model='product.Name'
+						id="product-name" placeholder="Nombre Producto">
 					</div>
 					<div class="form-group">
 						<label for="description">Descripcion</label>
-						<input type="text" class="form-control" data-ng-model='product.Description' id="description" placeholder="Descripcion">
+						<input type="text" class="form-control"  validate='text-number' data-ng-model='product.Description'  id="description"
+						placeholder="Descripcion">
 					</div>
-					<div class="form-group">
+					<div class="form-group">						
 						<label for="type-product">Tipo Producto</label>
-						<select class="form-control" ng-options="productType as productType.Name for productType in productTypes" ng-model="product.ProductType">
+						<!--<select ng-init="report=r eports[0]" ng-model="report" ng-options="report.Name for report in reports"></select>						-->
+						<select class="form-control" require validate ng-model="currentProductType" ng-options="productType.Name for  productType in productTypes">
+							<option value="" selected>Seleccione un tipo producto</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="code">Cantidad</label>
-						<input type="text" class="form-control" data-ng-model='product.Code' id="code" placeholder="Cantidad">
+						<label for="code">Precio</label>
+						<input type="text" class="form-control" require validate='number'  data-ng-model='product.Price' id="price"
+						placeholder="Precio">
 					</div>
 					<div class="form-group">
 						<label for="code">Codigo</label>
-						<input type="text" class="form-control" data-ng-model='product.Code' id="code" placeholder="Codigo">
+						<input type="text" class="form-control"  data-ng-model='product.Code' id="code" placeholder="Codigo">
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click='saveProduct();'>Guardar</button>
+				<button type="button" class="btn btn-primary" data-ng-disabled="!product.Name || !currentProductType || ! product.Price " data-dismiss="modal" data-ng-click='saveProduct();'>Guardar</button>
 			</div>
 		</div>
 	</div>
 </div>
-
-<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-product' button-cancel="true" message="Estas seguro de Eliminar {{product.Name}}" confirm-action="deleteProduct()"></data-modal-confirmation>
+<data-modal-confirmation title="Confirmacion" button-accept="true" modal-id='modal-confirmation-product' button-cancel="true"
+message="Estas seguro de Eliminar {{product.Name}}" confirm-action="deleteProduct()"></data-modal-confirmation>

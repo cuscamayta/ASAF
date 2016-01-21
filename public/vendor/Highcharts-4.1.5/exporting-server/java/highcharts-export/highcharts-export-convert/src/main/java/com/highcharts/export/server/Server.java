@@ -57,7 +57,7 @@ public class Server {
 			if (readLine == null || !readLine.contains("ready")) {
                 logger.log(Level.WARNING, "Command starting Phantomjs failed");
                 process.destroy();
-				throw new RuntimeException("Error, PhantomJS couldnot start");
+				throw new RuntimeException("Error, PhantomJS couldnot start");                
 			}
 
 			initialize();
@@ -93,7 +93,7 @@ public class Server {
 		try {
 			URL url = new URL("http://" + host + ":"
 					+ port + "/");
-
+			
 			// TEST with running a local phantom instance
 			// url = new URL("http://" + host + ":7777/");
 			// logger.log(Level.INFO, "requesting url: " + url.toString());

@@ -1,14 +1,14 @@
 'use strict';
 
 var _ = require('lodash');
-var Product = require('./product.model');
+var models = require('../common/Schema'),
+	Product = models.Product;
 
 exports.index = function (req, res) {
-	Product.find(function (err, products) {
-		if (err) {
-			return handleError(res, err);
-		}
-		return res.json(200, products);
+	Product.find().populate('ProductType').populate('ProductTransactions').exec(function (err, products) {
+		if (err)
+			return handleError(res, err);		
+		res.send(200, products);
 	});
 };
 
@@ -34,14 +34,11 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
-<<<<<<< HEAD
 	console.log('request');
 	console.log(req);
 	console.log('response');
 	console.log(res);
 
-=======
->>>>>>> c88a6951759647e87b874b1e9ee404781fec620e
 	if (req.body._id) {
 		delete req.body._id;
 	}

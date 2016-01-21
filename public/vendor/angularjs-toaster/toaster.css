@@ -1,9 +1,9 @@
 /*
  * Toastr
  * Version 2.0.1
- * Copyright 2012 John Papa and Hans Fjallemark.
- * All Rights Reserved.
- * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * Copyright 2012 John Papa and Hans Fjallemark.  
+ * All Rights Reserved.  
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and 
  * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
  *
  * Author: John Papa and Hans Fjallemark
@@ -220,15 +220,15 @@ button.toast-close-button {
  */
 :not(.no-enter)#toast-container > div.ng-enter,
 :not(.no-leave)#toast-container > div.ng-leave
-{
+{ 
     -webkit-transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     -moz-transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     -ms-transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     -o-transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     transition: 1000ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-}
+} 
 
-:not(.no-enter)#toast-container > div.ng-enter.ng-enter-active,
+:not(.no-enter)#toast-container > div.ng-enter.ng-enter-active, 
 :not(.no-leave)#toast-container > div.ng-leave {
     opacity: 0.8;
 }

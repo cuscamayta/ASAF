@@ -21,8 +21,8 @@ angular.module('toaster', ['ngAnimate'])
 
     /* Options:
         - Boolean false/true
-            'close-button': true
-        - object if not a boolean that allows you to
+            'close-button': true      
+        - object if not a boolean that allows you to 
           override showing the close button for each
           icon-class value
           'close-button': { 'toast-error': true, 'toast-info': false }
@@ -224,7 +224,7 @@ function ($parse, $rootScope, $interval, $sce, toasterConfig, toaster, toasterEv
                 // if toast.showCloseButton is a boolean value,
                 // it was specifically overriden in the pop arguments
                 if (typeof toast.showCloseButton === "boolean") {
-
+                    
                 } else if (typeof closeButton === "boolean") {
                     toast.showCloseButton = closeButton;
                 } else if (typeof closeButton === "object") {
